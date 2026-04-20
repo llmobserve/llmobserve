@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/llmobserve/llmobserve/models"
+	"github.com/llmobserve/llmobserve/tracer"
 	"github.com/openai/openai-go/v3"
-	"github.com/raghavchitkara36/llmscope/models"
-	"github.com/raghavchitkara36/llmscope/tracer"
 )
 
 // OpenAIClient wraps the official OpenAI client with tracing.
@@ -19,7 +19,7 @@ type OpenAIClient struct {
 	projectID      string
 }
 
-// WrapOpenAI wraps the user's existing OpenAI client with llmscope tracing.
+// WrapOpenAI wraps the user's existing OpenAI client with llmobserve tracing.
 // The user passes their already-configured client — we never touch API keys
 // or client configuration.
 //

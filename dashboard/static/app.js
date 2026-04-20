@@ -1,4 +1,4 @@
-/* llmscope dashboard — app.js */
+/* llmobserve dashboard — app.js */
 
 const API = {
     projects: () => fetch('/api/projects').then(r => r.json()),

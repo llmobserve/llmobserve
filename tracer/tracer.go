@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/raghavchitkara36/llmscope/models"
-	"github.com/raghavchitkara36/llmscope/storage"
+	"github.com/llmobserve/llmobserve/models"
+	"github.com/llmobserve/llmobserve/storage"
 )
 
 const (

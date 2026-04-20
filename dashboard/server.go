@@ -10,15 +10,15 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/raghavchitkara36/llmscope/models"
-	"github.com/raghavchitkara36/llmscope/storage"
-	"github.com/raghavchitkara36/llmscope/tracer"
+	"github.com/llmobserve/llmobserve/models"
+	"github.com/llmobserve/llmobserve/storage"
+	"github.com/llmobserve/llmobserve/tracer"
 )
 
 //go:embed static
 var staticFiles embed.FS
 
-// Dashboard serves the llmscope browser UI and JSON API.
+// Dashboard serves the llmobserve browser UI and JSON API.
 type Dashboard struct {
 	tracer *tracer.Tracer
 }
@@ -46,7 +46,7 @@ func Start(t *tracer.Tracer, port int) {
 	mux.HandleFunc("GET /api/traces/{id}", d.handleTrace)
 
 	addr := fmt.Sprintf(":%d", port)
-	slog.Info("llmscope dashboard started",
+	slog.Info("llmobserve dashboard started",
 		"url", fmt.Sprintf("http://localhost:%d", port),
 	)
 

@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/raghavchitkara36/llmscope/models"
+	"github.com/llmobserve/llmobserve/models"
 
 	_ "modernc.org/sqlite"
 )

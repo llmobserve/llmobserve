@@ -1,8 +1,8 @@
 *.db
 *.db-shm
 *.db-wal
-llmscope-traces/
-llmscope/
+llmobserve-traces/
+llmobserve/
 *.exe
 *.test
 .DS_Store

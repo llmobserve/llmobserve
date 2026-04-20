@@ -3,7 +3,7 @@ package storage
 import (
 	"context"
 
-	"github.com/raghavchitkara36/llmscope/models"
+	"github.com/llmobserve/llmobserve/models"
 )
 
 type Storage interface {

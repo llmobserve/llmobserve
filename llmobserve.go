@@ -1,22 +1,22 @@
-package llmscope
+package llmobserve
 
 import (
 	"context"
 	"fmt"
 
+	"github.com/llmobserve/llmobserve/providers"
+	"github.com/llmobserve/llmobserve/tracer"
 	openai "github.com/openai/openai-go/v3"
-	"github.com/raghavchitkara36/llmscope/providers"
-	"github.com/raghavchitkara36/llmscope/tracer"
 
 	"log/slog"
 
+	dashboard "github.com/llmobserve/llmobserve/dashboard"
+	"github.com/llmobserve/llmobserve/models"
+	"github.com/llmobserve/llmobserve/storage"
 	ollama "github.com/ollama/ollama/api"
-	dashboard "github.com/raghavchitkara36/llmscope/dashboard"
-	"github.com/raghavchitkara36/llmscope/models"
-	"github.com/raghavchitkara36/llmscope/storage"
 )
 
-// create a init function return new llmscope init the storage on the basis of path
+// create a init function return new llmobserve init the storage on the basis of path
 
 type Config struct {
 	StoragePath string
@@ -29,12 +29,12 @@ type Scope struct {
 
 func New(cfg Config) (*Scope, error) {
 	if cfg.StoragePath == "" {
-		cfg.StoragePath = "./llmscope"
+		cfg.StoragePath = "./llmobserve"
 	}
 
 	sqlStorage, err := storage.NewSQLiteStorage(cfg.StoragePath)
 	if err != nil {
-		return nil, fmt.Errorf("llmscope: initialising storage: %w", err)
+		return nil, fmt.Errorf("llmobserve: initialising storage: %w", err)
 	}
 
 	t := tracer.New(sqlStorage)
@@ -70,7 +70,7 @@ func (s *Scope) ensureProject(ctx context.Context, projectID string) {
 	project.ProjectID = projectID // use the user's ID not a generated one
 
 	if err := s.tracer.SaveProject(ctx, project); err != nil {
-		slog.Warn("llmscope: failed to save project",
+		slog.Warn("llmobserve: failed to save project",
 			"project_id", projectID,
 			"error", err,
 		)

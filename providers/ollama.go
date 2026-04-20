@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/llmobserve/llmobserve/models"
+	"github.com/llmobserve/llmobserve/tracer"
 	"github.com/ollama/ollama/api"
-	"github.com/raghavchitkara36/llmscope/models"
-	"github.com/raghavchitkara36/llmscope/tracer"
 )
 
 // OllamaClient wraps the official Ollama API client with tracing.
@@ -22,7 +22,7 @@ type OllamaClient struct {
 	projectID   string
 }
 
-// WrapOllama wraps the user's existing Ollama client with llmscope tracing.
+// WrapOllama wraps the user's existing Ollama client with llmobserve tracing.
 // The user passes their already-configured client — we never touch host
 // configuration or client settings.
 //
